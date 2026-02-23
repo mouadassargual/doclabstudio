@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const WHATSAPP_URL = "https://wa.me/212659787789";
+const WHATSAPP_URL = "https://wa.me/212659787789?text=Bonjour%20DOCLAB%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services.";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -15,71 +16,91 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { label: "Solution", href: "#solution" },
-    { label: "Impact", href: "#impact" },
+    { label: "Services", href: "#services" },
+    { label: "Résultats", href: "#resultats" },
     { label: "Processus", href: "#processus" },
+    { label: "Témoignages", href: "#temoignages" },
     { label: "FAQ", href: "#faq" },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/95 backdrop-blur-md shadow-sm" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "glass shadow-sm py-2" : "bg-transparent py-4"
       }`}
     >
-      <div className="container flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="text-xl font-bold text-primary tracking-tight">
-          MedPresence
+      <div className="container flex items-center justify-between">
+        <a href="#" className="flex items-center gap-2">
+          <div className="w-9 h-9 rounded-lg bg-hero-gradient flex items-center justify-center">
+            <span className="text-primary-foreground font-display font-bold text-sm">D</span>
+          </div>
+          <span className="font-display text-xl font-bold tracking-tight text-foreground">
+            DOC<span className="text-gradient">LAB</span>
+          </span>
         </a>
 
-        {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
             >
               {link.label}
             </a>
           ))}
-          <Button variant="hero" size="lg" asChild>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-              Contactez-nous
-            </a>
-          </Button>
         </nav>
 
-        {/* Mobile toggle */}
+        <div className="hidden lg:flex items-center gap-3">
+          <Button variant="ghost" size="sm" asChild>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              WhatsApp
+            </a>
+          </Button>
+          <Button variant="hero" asChild>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              Réserver un appel
+            </a>
+          </Button>
+        </div>
+
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden p-2 text-foreground"
+          className="lg:hidden p-2 text-foreground"
           aria-label="Menu"
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-background border-t border-border px-6 py-4 space-y-3">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="block text-sm font-medium text-muted-foreground hover:text-primary py-2"
-            >
-              {link.label}
-            </a>
-          ))}
-          <Button variant="hero" className="w-full" asChild>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-              Contactez-nous
-            </a>
-          </Button>
-        </div>
-      )}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden glass border-t border-border overflow-hidden"
+          >
+            <div className="container py-6 space-y-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="block text-base font-medium text-foreground hover:text-primary py-2"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <Button variant="hero" className="w-full mt-4" asChild>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                  Réserver un appel
+                </a>
+              </Button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };

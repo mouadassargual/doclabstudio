@@ -1,4 +1,4 @@
-import AnimatedSection from "@/components/AnimatedSection";
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -9,59 +9,73 @@ import {
 const faqs = [
   {
     q: "Est-ce conforme aux règles déontologiques médicales ?",
-    a: "Absolument. Toute notre approche est conçue dans le respect strict du code de déontologie médicale. Nous privilégions le contenu éducatif, informatif et éthique — jamais de publicité agressive ou de promesses irréalistes.",
+    a: "Absolument. Toute notre approche respecte strictement le code de déontologie médicale. Nous créons du contenu éducatif et informatif — jamais de publicité agressive ou de promesses irréalistes. Chaque contenu est validé avant publication.",
   },
   {
     q: "Dois-je apparaître en vidéo ?",
-    a: "Ce n'est pas obligatoire, mais fortement recommandé. Votre présence en vidéo renforce la confiance et l'authenticité. Nous pouvons aussi créer des contenus visuels sans votre apparition directe si vous le préférez.",
+    a: "Ce n'est pas obligatoire, mais c'est fortement recommandé. Votre visage crée de la confiance et de l'authenticité. Si vous préférez ne pas apparaître, nous avons des formats alternatifs tout aussi efficaces (infographies, voix-off, etc.).",
   },
   {
     q: "Est-ce adapté à ma spécialité ?",
-    a: "Oui. Notre approche est personnalisée pour chaque spécialité médicale : dermatologie, pédiatrie, chirurgie, médecine générale, ophtalmologie, etc. Nous adaptons le contenu à votre domaine et à votre patientèle cible.",
+    a: "Oui, nous travaillons avec toutes les spécialités : dermatologie, pédiatrie, chirurgie, médecine générale, ophtalmologie, cardiologie, et bien d'autres. Notre stratégie est toujours personnalisée selon votre domaine.",
   },
   {
-    q: "Combien de temps avant de voir des résultats ?",
-    a: "Les premiers résultats sont généralement visibles après 4 à 8 semaines de publication régulière. La construction d'une autorité digitale solide se fait progressivement, avec un impact croissant sur le long terme.",
+    q: "Quels résultats puis-je attendre et en combien de temps ?",
+    a: "Les premiers résultats sont visibles dès 4 à 6 semaines : augmentation de l'engagement, plus de visibilité sur les moteurs de recherche. En 3 à 6 mois, vous constatez une hausse significative des demandes de rendez-vous.",
   },
   {
-    q: "Que comprend le diagnostic gratuit ?",
-    a: "Le diagnostic inclut une analyse de votre présence en ligne actuelle, l'identification des opportunités pour votre spécialité, et des recommandations concrètes pour renforcer votre visibilité digitale.",
+    q: "Combien coûtent vos services ?",
+    a: "Nous proposons des formules adaptées à chaque budget et objectif. Contactez-nous sur WhatsApp pour un devis personnalisé et gratuit. Nos tarifs sont transparents et sans surprise.",
+  },
+  {
+    q: "Je n'ai pas le temps de m'en occuper, comment ça se passe ?",
+    a: "C'est justement notre valeur ajoutée : nous gérons tout de A à Z. Après un premier échange pour comprendre vos objectifs, nous nous occupons de la stratégie, de la création et de la publication. Votre temps d'implication est minimal.",
   },
 ];
 
 const FAQSection = () => (
-  <section className="py-20 md:py-28" id="faq">
+  <section className="py-24 md:py-32 bg-section-alt" id="faq">
     <div className="container">
-      <AnimatedSection>
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <p className="text-sm font-semibold text-secondary uppercase tracking-wider mb-3">FAQ</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Questions{" "}
-            <span className="text-gradient">fréquentes</span>
-          </h2>
-        </div>
-      </AnimatedSection>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-center max-w-2xl mx-auto mb-16"
+      >
+        <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-semibold uppercase tracking-wider mb-4">
+          FAQ
+        </span>
+        <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+          Vos questions,{" "}
+          <span className="text-gradient">nos réponses</span>
+        </h2>
+      </motion.div>
 
-      <AnimatedSection delay={0.1}>
-        <div className="max-w-2xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-glow transition-shadow"
-              >
-                <AccordionTrigger className="text-left font-medium hover:no-underline py-5">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-5">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </AnimatedSection>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="max-w-2xl mx-auto"
+      >
+        <Accordion type="single" collapsible className="space-y-3">
+          {faqs.map((faq, i) => (
+            <AccordionItem
+              key={i}
+              value={`faq-${i}`}
+              className="bg-background border border-border rounded-2xl px-6 data-[state=open]:shadow-glow data-[state=open]:border-primary/20 transition-all duration-300"
+            >
+              <AccordionTrigger className="text-left font-medium text-[15px] hover:no-underline py-5">
+                {faq.q}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-5">
+                {faq.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </motion.div>
     </div>
   </section>
 );
