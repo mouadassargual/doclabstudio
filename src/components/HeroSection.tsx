@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { MessageCircle, ArrowRight, Play, CheckCircle2 } from "lucide-react";
 import heroDoctor from "@/assets/hero-doctor.jpg";
 
-const WHATSAPP_URL = "https://wa.me/212659787789?text=Bonjour%20DOCLAB%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services.";
+const WHATSAPP_URL = "https://wa.me/212680780286?text=Bonjour%20DOCLAB%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services.";
 
 const benefits = [
   "Stratégie de contenu sur mesure",

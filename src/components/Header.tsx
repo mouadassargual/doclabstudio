@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const WHATSAPP_URL = "https://wa.me/212659787789?text=Bonjour%20DOCLAB%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services.";
+const WHATSAPP_URL = "https://wa.me/212680780286?text=Bonjour%20DOCLAB%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20vos%20services.";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -31,12 +31,7 @@ const Header = () => {
     >
       <div className="container flex items-center justify-between">
         <a href="#" className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-lg bg-hero-gradient flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-bold text-sm">D</span>
-          </div>
-          <span className="font-display text-xl font-bold tracking-tight text-foreground">
-            DOC<span className="text-gradient">LAB</span>
-          </span>
+          <img src="/logo.png" alt="DOCLAB" className="h-10 w-auto" />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
