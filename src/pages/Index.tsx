@@ -8,6 +8,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const Index = () => (
   <>
@@ -23,6 +24,7 @@ const Index = () => (
       <FinalCTA />
     </main>
     <Footer />
+    <WhatsAppFloat />
   </>
 );
 
