@@ -31,7 +31,7 @@ const Header = () => {
     >
       <div className="container flex items-center justify-between">
         <a href="#" className="flex items-center gap-2">
-          <img src="/logo officiel.png" alt="DOCLAB" className="h-10 w-auto" />
+          <img src="/logo-officiel.png" alt="DOCLAB" className="h-10 w-auto" />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
