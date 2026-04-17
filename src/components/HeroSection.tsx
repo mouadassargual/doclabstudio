@@ -123,14 +123,14 @@ const HeroSection = () => (
       </motion.div>
 
       {/* ── Zone image + stats flottantes ── */}
-      <div className="relative w-full max-w-3xl mx-auto flex justify-center items-end">
+      <div className="relative w-full max-w-3xl mx-auto flex flex-col sm:flex-row justify-center items-center sm:items-end pb-36">
 
-        {/* Stat flottante GAUCHE — Visibilité */}
+        {/* Stat flottante GAUCHE — Visibilité (Desktop uniquement) */}
         <motion.div
           initial={{ opacity: 0, x: -50, y: 20 }}
           animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ duration: 0.6, delay: 0.55 }}
-          className="absolute left-0 sm:left-4 top-[30%] z-20"
+          className="hidden sm:block absolute left-4 top-[30%] z-20"
         >
           <motion.div
             animate={{ y: [0, -8, 0] }}
@@ -154,12 +154,12 @@ const HeroSection = () => (
           </motion.div>
         </motion.div>
 
-        {/* Stat flottante DROITE HAUTE — Partenaire */}
+        {/* Stat flottante DROITE HAUTE — Partenaire (Desktop uniquement) */}
         <motion.div
           initial={{ opacity: 0, x: 50, y: 20 }}
           animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ duration: 0.6, delay: 0.65 }}
-          className="absolute right-0 sm:right-4 top-4 z-20"
+          className="hidden sm:block absolute right-4 top-4 z-20"
         >
           <motion.div
             animate={{ y: [0, -6, 0] }}
@@ -182,12 +182,12 @@ const HeroSection = () => (
           </motion.div>
         </motion.div>
 
-        {/* Stat flottante DROITE BAS — Médecins */}
+        {/* Stat flottante DROITE BAS — Médecins (Desktop uniquement) */}
         <motion.div
           initial={{ opacity: 0, x: 50, y: 20 }}
           animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ duration: 0.6, delay: 0.75 }}
-          className="absolute right-0 sm:right-4 top-[45%] z-20"
+          className="hidden sm:block absolute right-4 top-[45%] z-20"
         >
           <motion.div
             animate={{ y: [0, -7, 0] }}
@@ -206,12 +206,47 @@ const HeroSection = () => (
           </motion.div>
         </motion.div>
 
+        {/* ── Version Mobile des Stats (S'affiche en grille au-dessus de l'image sur petit écran) ── */}
+        <div className="sm:hidden flex flex-col gap-3 w-full mb-8 z-20 px-4">
+          <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-3 flex items-center justify-between border border-white">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#0b4674] to-[#2198b5]">
+                <TrendingUp size={14} className="text-white" />
+              </div>
+              <p className="text-xs text-muted-foreground font-medium">Visibilité</p>
+            </div>
+            <p className="font-display text-xl font-bold text-[#0b4674]">+150%</p>
+          </div>
+          
+          <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-3 flex items-center justify-between border border-white">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#0b4674] to-[#2198b5]">
+                <Users size={14} className="text-white" />
+              </div>
+              <p className="text-xs text-muted-foreground font-medium">Médecins</p>
+            </div>
+            <p className="font-display text-xl font-bold text-[#0b4674]">+80</p>
+          </div>
+          
+          <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-lg p-3 flex items-center justify-between border border-white">
+             <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br from-[#0b4674] to-[#2198b5]">
+                <ThumbsUp size={14} className="text-white" />
+              </div>
+              <p className="text-xs text-muted-foreground font-medium">Satisfaction</p>
+            </div>
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => <Star key={i} size={12} className="fill-yellow-400 text-yellow-400" />)}
+            </div>
+          </div>
+        </div>
+
         {/* Image du médecin — cutout sur fond transparent */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45 }}
-          className="relative z-30 flex justify-center"
+          className="relative z-30 flex justify-center w-full"
         >
           {/* Glow subtil derrière le médecin */}
           <div
@@ -221,7 +256,7 @@ const HeroSection = () => (
           <img
             src={heroDoctor}
             alt="Médecin professionnel DOCLAB"
-            className="w-[300px] sm:w-[380px] lg:w-[460px] object-contain object-bottom"
+            className="w-[260px] sm:w-[380px] lg:w-[460px] object-contain object-bottom"
             style={{ maxHeight: "560px" }}
           />
         </motion.div>
