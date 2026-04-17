@@ -26,12 +26,18 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "glass shadow-sm py-2" : "bg-transparent py-4"
+        scrolled
+          ? "bg-white/95 backdrop-blur-xl shadow-md py-2"
+          : "bg-transparent py-4"
       }`}
     >
       <div className="container flex items-center justify-between">
         <a href="#" className="flex items-center gap-2">
-          <img src="/logo_officiel-removebg-preview.png" alt="DOCLAB" className="h-10 w-auto" />
+          <img
+            src="/new-logo.png"
+            alt="DOCLAB"
+            className="h-14 w-auto"
+          />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
@@ -39,7 +45,11 @@ const Header = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
+              className={`text-sm font-semibold transition-colors duration-200 ${
+                scrolled
+                  ? "text-muted-foreground hover:text-primary"
+                  : "text-[#0b4674] hover:text-[#2198b5]"
+              }`}
             >
               {link.label}
             </a>
@@ -47,12 +57,25 @@ const Header = () => {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <Button variant="ghost" size="sm" asChild>
+          <Button
+            variant="ghost"
+            size="sm"
+            className={scrolled ? "" : "text-[#0b4674] hover:text-primary hover:bg-primary/10"}
+            asChild
+          >
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
               WhatsApp
             </a>
           </Button>
-          <Button variant="hero" asChild>
+          <Button
+            size="sm"
+            className={`font-semibold ${
+              scrolled
+                ? "bg-primary hover:bg-primary/90 text-white"
+                : "bg-primary text-white hover:bg-primary/90 shadow-md"
+            }`}
+            asChild
+          >
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
               Réserver un appel
             </a>
@@ -61,7 +84,7 @@ const Header = () => {
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden p-2 text-foreground"
+          className={`lg:hidden p-2 ${scrolled ? "text-foreground" : "text-[#0b4674]"}`}
           aria-label="Menu"
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -74,7 +97,7 @@ const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden glass border-t border-border overflow-hidden"
+            className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-border overflow-hidden shadow-lg"
           >
             <div className="container py-6 space-y-4">
               {navLinks.map((link) => (
@@ -87,7 +110,7 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="hero" className="w-full mt-4" asChild>
+              <Button className="w-full mt-4 bg-primary hover:bg-primary/90 text-white font-semibold" asChild>
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
                   Réserver un appel
                 </a>

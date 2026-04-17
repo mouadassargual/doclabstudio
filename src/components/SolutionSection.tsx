@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { FileVideo, Target, Share2, UserCheck, Award, Palette } from "lucide-react";
-import solutionVisual from "@/assets/solution-visual.jpg";
+import solutionVisual from "@/assets/solution-visual.png";
 
 const services = [
   { icon: Target, title: "Stratégie de contenu", desc: "Plan éditorial personnalisé selon votre spécialité et vos objectifs de croissance." },
@@ -12,7 +12,7 @@ const services = [
 ];
 
 const SolutionSection = () => (
-  <section className="py-24 md:py-32" id="services">
+  <section className="py-24 md:py-32 bg-white" id="services">
     <div className="container">
       <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
         <motion.div

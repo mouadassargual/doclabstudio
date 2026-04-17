@@ -10,7 +10,7 @@ const steps = [
 ];
 
 const ProcessSection = () => (
-  <section className="py-24 md:py-32 bg-section-alt" id="processus">
+  <section className="py-24 md:py-32 bg-white" id="processus">
     <div className="container">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
