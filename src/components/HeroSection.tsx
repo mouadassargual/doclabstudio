@@ -123,7 +123,7 @@ const HeroSection = () => (
       </motion.div>
 
       {/* ── Zone image + stats flottantes ── */}
-      <div className="relative w-full max-w-3xl mx-auto flex flex-col sm:flex-row justify-center items-center sm:items-end pb-36">
+      <div className="relative w-full max-w-3xl mx-auto flex flex-col sm:flex-row justify-center items-center sm:items-end pt-8">
 
         {/* Stat flottante GAUCHE — Visibilité (Desktop uniquement) */}
         <motion.div
@@ -264,9 +264,9 @@ const HeroSection = () => (
       </div>
     </div>
 
-    {/* Dégradé de transition doux — aucune ligne visible */}
-    <div className="absolute bottom-0 left-0 right-0 h-40 z-10 pointer-events-none"
-      style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.6) 50%, white 100%)" }}
+    {/* Dégradé de transition doux — passe devant l'image (z-40) pour masquer la coupure nette du bassin */}
+    <div className="absolute bottom-0 left-0 right-0 h-32 z-40 pointer-events-none"
+      style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.8) 60%, white 100%)" }}
     />
   </section>
 );
